@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "874376032766",
+    "firebase_url": "https://matchfoxdb.firebaseio.com",
+    "project_id": "matchfoxdb",
+    "storage_bucket": "matchfoxdb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:874376032766:android:375b50b37f29296c5910af",
+        "android_client_info": {
+          "package_name": "gg.matchfox"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "874376032766-rrjogh40djbdekdqnckq9vg215rpa8nb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9zxiZCLYfJX_rSdKNnTMjy-5FNZJIIek"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "874376032766-rrjogh40djbdekdqnckq9vg215rpa8nb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
