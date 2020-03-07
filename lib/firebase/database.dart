@@ -17,12 +17,11 @@ class Database {
 
     return completer.future;
   }
-  Org scan() {}
 }
 
 class Org {
   String id;
-  Org(id);
+  Org(this.id);
   
   Future<List<Bracket>> getBrackets() {
     HttpsCallable callable = CloudFunctions.instance
@@ -48,7 +47,21 @@ class Org {
 class Bracket {
   String id;
   String name;
-  Bracket(id, name);
+  Bracket(this.id, this.name);
+  Bracket.withId(this.id);
+
+  Future<String> getName() {
+    HttpsCallable callable = CloudFunctions.instance
+        .getHttpsCallable(functionName: 'getBracket')
+          ..timeout = const Duration(seconds: 30);
+    Future<HttpsCallableResult> result = callable.call(
+      <String, dynamic>{
+        'bracketID': id
+      }
+    );
+
+
+  }
 
   Future<List<Match>> getMatches() {
     HttpsCallable callable = CloudFunctions.instance
@@ -56,13 +69,13 @@ class Bracket {
           ..timeout = const Duration(seconds: 30);
     Future<HttpsCallableResult> result = callable.call(
       <String, dynamic>{
-        'BracketId': id
+        'bracketID': id
       }
     );
 
     var completer = new Completer<List<Match>>();
     result.then((result) {
-      List<dynamic> strList = result.data as List<dynamic>;
+      List<dynamic> strList = result.data['bracket'] as List<dynamic>;
       int i = 0;
       List<Match> matchList = strList.map((d) {
         List<Member> memList = (d['members'] as List<dynamic>).map((id) => Member(id));
@@ -71,6 +84,8 @@ class Bracket {
       }).toList();
       completer.complete(matchList);
     });
+
+    return completer.future;
   }
   void register(String userID) {}
 }
@@ -81,22 +96,22 @@ class Match {
   List<int> score;
   int nextMatch;
   int stage;
-  Match(id, members, score, nextMatch, stage);
+  Match(this.id, this.members, this.score, this.nextMatch, this.stage);
 
   void reportMatch(int score1, score2) {}
 }
 
 class Member {
-  int id;
-  Member(id);
+  String id;
+  Member(this.id);
 
   Future<String> getUsername() {
      HttpsCallable callable = CloudFunctions.instance
-        .getHttpsCallable(functionName: 'getUserName')
+        .getHttpsCallable(functionName: 'getUsername')
           ..timeout = const Duration(seconds: 30);
     Future<HttpsCallableResult> result = callable.call(
       <String, dynamic>{
-        'BracketId': id
+        'userID': id
       }
     );
 
@@ -107,6 +122,20 @@ class Member {
 
     return completer.future;
   }
+
+  Future<HttpsCallableResult> setUsername(String username) {
+    HttpsCallable callable = CloudFunctions.instance
+        .getHttpsCallable(functionName: 'setUsername')
+          ..timeout = const Duration(seconds: 30);
+    return callable.call(
+      <String, dynamic>{
+        'id': id,
+        'username': username
+      }
+    );
+  }
+
+
 }
 
 // OrgID[] getOrgs() {}
