@@ -1,6 +1,5 @@
 import 'package:Matchfox/home.dart';
-import 'package:Matchfox/login.dart';
-import 'package:Matchfox/signup.dart';
+import 'package:Matchfox/loginSignup.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -9,12 +8,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Matchfox',
       theme: _theme(),
-      home: Login(),
+      home: Main(),
       routes: <String, WidgetBuilder> {
-        'login': (BuildContext context) => Login(),
-        'signup': (BuildContext context) => Signup(),
+        'loginsignup': (BuildContext context) => LoginSignup(),
         'home': (BuildContext context) => Home(),
       },
     );
@@ -35,6 +33,6 @@ class Main extends StatefulWidget {
 class _MainState extends State<Main> {
   @override
   Widget build(BuildContext context) {
-    return Login();
+    return LoginSignup();
   }
 }
