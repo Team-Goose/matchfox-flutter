@@ -2,12 +2,12 @@ import 'package:Matchfox/main.dart';
 import 'package:flutter/material.dart';
 
 class Leading extends StatefulWidget {
-  Widget backTo;
+  final Widget backTo;
   
-  Leading(this.backTo)
+  Leading(this.backTo);
 
   @override
-  _LeadingState createState() => _LeadingState();
+  _LeadingState createState() => _LeadingState(backTo);
 }
 
 class _LeadingState extends State<Leading> {
