@@ -30,25 +30,28 @@ class _HomeState extends State<Home> {
             IconButton(
               icon: Icon(Icons.home),
               onPressed: () {
-                print('home');
-                title = 'Home';
-                page = Landing();
+                setState(() {
+                  title = 'Home';
+                  page = Landing();
+                });
               }
             ),
             IconButton(
               icon: Icon(Icons.apps),
               onPressed: () {
-                print('brackets');
-                title = 'Brackets';
-                page = BracketPage();
+                setState(() {
+                  title = 'Brackets';
+                  page = BracketPage();
+                });
               }
             ),
             IconButton(
               icon: Icon(Icons.person),
               onPressed: () {
-                print('profile');
-                title = 'Profile';
-                page = ProfilePage();
+                setState(() {
+                  title = 'Profile';
+                  page = ProfilePage();
+                });
               }
             ),
           ],
