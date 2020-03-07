@@ -12,7 +12,7 @@ class BracketView extends StatefulWidget {
 
 class _BracketViewState extends State<BracketView> {
   Bracket bracket;
-  _BracketViewState(bracket);
+  _BracketViewState(this.bracket);
   List<Match> matches;
 
   @override

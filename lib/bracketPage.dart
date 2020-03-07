@@ -11,7 +11,7 @@ class _BracketPageState extends State<BracketPage> {
 
   _BracketPageState();
 
-  List<BracketCard> cards = List<BracketCard>();
+  List<BracketCard> cards = [];
 
   setupCards() {
     cards.add(BracketCard(Bracket('55730440-6051-11ea-baec-070c925f546e')));

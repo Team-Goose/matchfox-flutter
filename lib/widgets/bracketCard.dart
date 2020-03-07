@@ -12,17 +12,19 @@ class BracketCard extends StatefulWidget {
 
 class _BracketCardState extends State<BracketCard> {
   Bracket bracket;
-  _BracketCardState(bracket);
+  _BracketCardState(this.bracket);
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: Column(
         children: <Widget>[
-          Text(bracket.name),
+          Text('Bracket'),
           MaterialButton(
             child: Text('View'),
             onPressed: () {
+              print('bracket');
+              print(bracket);
               Navigator.push(
                 context, 
                 MaterialPageRoute<void>(
