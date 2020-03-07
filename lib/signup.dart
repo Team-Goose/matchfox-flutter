@@ -18,7 +18,7 @@ class _SignupState extends State<Signup> {
   void initState() {
     super.initState();
     // Org("").getBrackets();
-    // Bracket.withId("55730440-6051-11ea-baec-070c925f546e").getMatches();
+    Bracket("55730440-6051-11ea-baec-070c925f546e").getMatches().then((matches){errorText = matches.toString();});
   }
 
   void checkSignup(BuildContext context) async {
@@ -44,8 +44,7 @@ class _SignupState extends State<Signup> {
       });
     });
     if (_user != null) {
-      Navigator.of(context).pop();
-      Navigator.pushReplacementNamed(context, "home");
+      Navigator.pushReplacementNamed(context, "setup");
     }
   }
 

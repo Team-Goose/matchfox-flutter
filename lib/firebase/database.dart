@@ -36,7 +36,7 @@ class Org {
     var completer = new Completer<List<Bracket>>();
     result.then((result) {
       List<dynamic> strList = result.data as List<dynamic>;
-      List<Bracket> bracketsList = strList.map((d) => Bracket(d['id'], d['name'])).toList();
+      List<Bracket> bracketsList = strList.map((d) => Bracket(d)).toList();
       completer.complete(bracketsList);
     });
 
@@ -46,11 +46,10 @@ class Org {
 
 class Bracket {
   String id;
-  String name;
-  Bracket(this.id, this.name);
-  Bracket.withId(this.id);
+  String name = "name";
+  Bracket(this.id);
 
-  Future<String> getName() {
+  Future<List<Match>> getMatches() {
     HttpsCallable callable = CloudFunctions.instance
         .getHttpsCallable(functionName: 'getBracket')
           ..timeout = const Duration(seconds: 30);
@@ -60,22 +59,10 @@ class Bracket {
       }
     );
 
-
-  }
-
-  Future<List<Match>> getMatches() {
-    HttpsCallable callable = CloudFunctions.instance
-        .getHttpsCallable(functionName: 'getMatches')
-          ..timeout = const Duration(seconds: 30);
-    Future<HttpsCallableResult> result = callable.call(
-      <String, dynamic>{
-        'bracketID': id
-      }
-    );
-
     var completer = new Completer<List<Match>>();
     result.then((result) {
-      List<dynamic> strList = result.data['bracket'] as List<dynamic>;
+      print(result.data);
+      List<dynamic> strList = result.data['stuff'] as List<dynamic>;
       int i = 0;
       List<Match> matchList = strList.map((d) {
         List<Member> memList = (d['members'] as List<dynamic>).map((id) => Member(id));
