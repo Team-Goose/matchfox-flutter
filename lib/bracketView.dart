@@ -11,7 +11,19 @@ class BracketView extends StatefulWidget {
 
 class _BracketViewState extends State<BracketView> {
   Bracket bracket;
-  _BracketViewState(this.bracket);
+  _BracketViewState(bracket);
+  List<Match> matches;
+
+  @override
+  void initState() {
+    bracket.getMatches().then((List<Match> matches) => {
+      super.setState(() {
+        this.matches = matches;
+      })
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

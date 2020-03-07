@@ -43,7 +43,7 @@ class _HomeState extends State<Home> {
                 try {
                   page = BracketPage();
                   Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
-                    return BracketView(qrText);
+                    // return BracketView();
                   }));
                 } catch (e) {
                   page = BracketPage();
