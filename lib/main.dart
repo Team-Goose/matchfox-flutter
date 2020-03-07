@@ -85,15 +85,14 @@ class _MainState extends State<Main> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    appBar: AppBar(
-      title: Text(_title),
-      centerTitle: true,
+      appBar: AppBar(
+        title: Text(_title),
+        centerTitle: true,
 
-      leading: _leading,
-    ),
+        leading: _leading,
+      ),
 
-    body: _body,
-    
-  );
+      body: _body,
+    );
   }
 }
