@@ -12,7 +12,7 @@ class BracketCard extends StatefulWidget {
 
 class _BracketCardState extends State<BracketCard> {
   Bracket bracket;
-  _BracketCardState(this.bracket);
+  _BracketCardState(bracket);
 
   @override
   Widget build(BuildContext context) {
