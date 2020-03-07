@@ -17,9 +17,9 @@ class _SetCardState extends State<SetCard> {
   Widget build(BuildContext context) {
     return Card(
       child: Column(children: <Widget>[
-        Text('Set 1'),
-        Text('player 1 vs player 2'),
-        Text('Score 1-2')
+        Text(match.id.toString()),
+        Text(match.members[0].toString() + ' vs. ' + match.members[1].toString()),
+        Text(match.score[0].toString() + '-' + match.score[1].toString()),
       ],),
     );
   }
