@@ -14,7 +14,7 @@ class _BracketPageState extends State<BracketPage> {
   List<BracketCard> cards = List<BracketCard>();
 
   setupCards() {
-    cards.add(BracketCard(Bracket()));
+    // cards.add(BracketCard(Bracket()));
   }
 
   @override

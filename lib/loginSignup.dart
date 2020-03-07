@@ -10,52 +10,52 @@ class _LoginSignupState extends State<LoginSignup> {
   String title = 'Log In';
   Widget page = Container();
 
+  Container _login() {
+    return Container(
+      child: ListView(
+        children: <Widget>[
+          TextField(),
+          TextField(),
+          RaisedButton(
+            child: Text('Log In'),
+            onPressed: () {
+              setState(() {
+                page = _signUp();
+              });
+            },
+          )
+        ],
+      ),
+    );
+  }
+
+  Container _signUp() {
+    return Container(
+      child: ListView(
+        children: <Widget>[
+          TextField(),
+          TextField(),
+          RaisedButton(
+            child: Text('Sign up'),
+            onPressed: () {
+              
+            },
+          ),
+          RaisedButton(
+            child: Text('Already have an account? Log in!'),
+            onPressed: () {
+              setState(() {
+                page = _login();
+              });
+            },
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    Container _login() {
-      return Container(
-        child: ListView(
-          children: <Widget>[
-            TextField(),
-            TextField(),
-            RaisedButton(
-              child: Text('Log In'),
-              onPressed: () {
-                setState(() {
-                  _signUp();
-                });
-              },
-            )
-          ],
-        ),
-      );
-    }
-
-    Container _signUp() {
-      return Container(
-        child: ListView(
-          children: <Widget>[
-            TextField(),
-            TextField(),
-            RaisedButton(
-              child: Text('Sign up'),
-              onPressed: () {
-                
-              },
-            ),
-            RaisedButton(
-              child: Text('Already have an account? Log in!'),
-              onPressed: () {
-                setState(() {
-                  page = _login();
-                });
-              },
-            ),
-          ],
-        ),
-      );
-    }
-
     setState(() {
       page = _login();
     });
