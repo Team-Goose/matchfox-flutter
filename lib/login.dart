@@ -6,10 +6,33 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  String errorText = '';
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text('login'),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Login'),
+        centerTitle: true,
+      ),
+      body: ListView(
+        children: <Widget>[
+          MaterialButton(
+            child: Text('Login'),
+            onPressed: () {
+              if(true) {
+                // Success
+                Navigator.pushReplacementNamed(context, 'home');
+              } /* else {
+                // Failure
+
+              } */
+            }
+          ),
+
+          Text(errorText),
+        ],
+      ),
     );
   }
 }
