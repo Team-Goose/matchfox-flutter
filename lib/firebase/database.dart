@@ -1,6 +1,9 @@
 import 'package:cloud_functions/cloud_functions.dart';
 
 class Database {
+  final HttpsCallable callable = CloudFunctions.instance
+        .getHttpsCallable(functionName: 'repeat')
+          ..timeout = const Duration(seconds: 30);
   Future<List<Org>> getOrgs() {}
   Org scan() {}
 }
