@@ -55,15 +55,20 @@ class _BracketViewState extends State<BracketView> {
       }
     }
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(bracket.name),
-        centerTitle: true,
-        bottom: TabBar(tabs: tabs),
-      ),
-      body: Container(
-        child: view,
-      ),
+    _populateTabs();
+
+    return DefaultTabController(
+      length: tabs.length,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(bracket.name),
+          centerTitle: true,
+          bottom: TabBar(tabs: tabs),
+        ),
+        body: Container(
+          child: view,
+        ),
+      )
     );
   }
 }
